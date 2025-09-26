@@ -6,6 +6,7 @@ import Goods from "./components/container/Goods";
 import { useGetGoods } from "./hooks/hooks";
 
 import './App.css'
+import GoodsItem from "./components/container/GoodsItem";
 
 function getSorting() {
     return [
@@ -19,18 +20,30 @@ function App() {
     const goodsList = useGetGoods();
 
     const [goods, setGoods] = useState(goodsList.goods ? goodsList.goods : []);
+    const [filteredGoods, setFilteredGoods] = useState(goodsList.goods ? goodsList.goods : []);
+
+    const handleChangeSearchInput = (search) => {
+        if (search !== '') {
+            const filteredData = goods.filter((item) => {
+            return Object.values(item.name).join('').toLowerCase().includes(search.toLowerCase())
+            })
+            setFilteredGoods(filteredData)
+        } else {
+            setFilteredGoods(goods)
+        }
+    }
 
     const handleSortButtonClick = (text) => {
 
         switch (text) {
             case "Сортировать по цене":
-                setGoods([...goodsList.goods].sort((a, b) => a.price - b.price));
+                setFilteredGoods([...filteredGoods].sort((a, b) => a.price - b.price));
                 break;
             case "Сортировать по рейтингу":
-                setGoods([...goodsList.goods].sort((a, b) => a.rating - b.rating));
+                setFilteredGoods([...filteredGoods].sort((a, b) => a.rating - b.rating));
                 break;
             default:
-                setGoods(goodsList.goods);
+                setGoods(filteredGoods);
         }
     };
 
@@ -45,6 +58,15 @@ function App() {
 
             <h2>Товары</h2>
             <div>
+                <input
+                    type="text"
+                    name="text"
+                    onChange={(e) => handleChangeSearchInput(e.target.value)}
+                    placeholder="Поиск товара"
+                />
+            </div>
+
+            <div>
                 {sorting}
             </div>
 
@@ -52,7 +74,7 @@ function App() {
 
             {goodsList.error ?
                 <p>Товары отсутствуют</p> :
-                <Goods goodsData={goods} />
+                <Goods goodsData={filteredGoods} />
             }
         </>
     )
