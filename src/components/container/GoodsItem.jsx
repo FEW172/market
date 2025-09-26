@@ -10,7 +10,7 @@ export default function GoodsItem({ goodsData }) {
     return (
         <>
             <div>
-                <div>id: {goodsData.id}</div>
+                <div>Идентификатор: {goodsData.id}</div>
                 <div>Категория: {goodsData.category}</div>
                 <div>Название: {goodsData.name}</div>
                 <div>Символьный код: {goodsData.code}</div>

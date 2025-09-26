@@ -45,8 +45,18 @@
     "name": "Зимние шипованные легковые шины Ikon (Nokian Tyres) Character Ice 7 (Nordman 7) SUV 215/65 R16 102T ",
     "code": "YD189094",
     "price": 9100.44,
-    "availability": true,
+    "availability": false,
     "rating": 5,
     "quantity": 25
+  },
+  {
+    "id": 6,
+    "category": "Дополнительные",
+    "name": "Штатная Магнитола TS105 для Volkswagen Touareg FL NF 2002-2018, с камерой заднего вида. QLED экран 9 дюймов, Wifi 2din с сенсорным экраном, usb и блютузом",
+    "code": "4585506479",
+    "price": 16023.66,
+    "availability": true,
+    "rating": 5,
+    "quantity": 8
   }
 ]
