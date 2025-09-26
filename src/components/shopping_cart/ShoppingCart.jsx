@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Button from "../button/button";
 
-export default function Basket() {
+export default function ShoppingCart() {
 
-const [basketData, setBasketData] = useState([]);
-console.log(basketData);
+    const [basketData, setBasketData] = useState([]);
+    console.log(basketData);
 
-    const handleButtonClick = (text) => {
+    const handleClickButton = (text) => {
 
         switch (text) {
             case "Удалить все":
@@ -32,7 +32,7 @@ console.log(basketData);
                         }
                 <Button
                     text="Удалить все"
-                    onClickButton={() => handleButtonClick("Удалить все")} />
+                    onClickButton={() => handleClickButton("Удалить все")} />
             </div>
         );
     } else {

@@ -1,10 +1,10 @@
 
-import Basket from "../basket/Basket";
+
 import Button from "../button/button";
-import { useState } from "react";
+
 export default function GoodsItem({ goodsData }) {
 
-    function handleClickButtonAddToBasket() {
+    function handleClickButton() {
 
         console.log(goodsData);
         //console.log(basketData);
@@ -21,7 +21,7 @@ export default function GoodsItem({ goodsData }) {
                 <div>Рейтинг: {goodsData.rating}</div>
                 <div>Количество на складе: {goodsData.quantity}</div>
                 <div>
-                    <Button text="Добавить в корзину" onClickButton={() => handleClickButtonAddToBasket()} />
+                    <Button text="Добавить в корзину" onClickButton={() => handleClickButton()} />
                 </div>
                 <br />
             </div>

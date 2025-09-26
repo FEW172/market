@@ -1,11 +1,11 @@
+import ShoppingCart from "./components/shopping_cart/ShoppingCart";
 
 import { useState } from "react";
+
 import Button from "../src/components/button/button";
 
 import Goods from "./components/container/Goods";
 import { useGetGoods } from "./hooks/hooks";
-
-import Basket from "./components/basket/Basket";
 
 import './App.css'
 
@@ -45,7 +45,7 @@ function App() {
 
             <h2>Корзина:</h2>
             <div>
-                <Basket />
+                <ShoppingCart />
             </div>
 
             <h2>Товары</h2>
