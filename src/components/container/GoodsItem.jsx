@@ -1,14 +1,8 @@
-
+import ShoppingCart from "../shopping_cart/ShoppingCart";
 
 import Button from "../button/button";
 
-export default function GoodsItem({ goodsData }) {
-
-    function handleClickButton() {
-
-        console.log(goodsData);
-        //console.log(basketData);
-    }
+export default function GoodsItem({ goodsData, button}) {
 
     return (
         <>
@@ -20,9 +14,7 @@ export default function GoodsItem({ goodsData }) {
                 <div>Цена: {goodsData.price}</div>
                 <div>Рейтинг: {goodsData.rating}</div>
                 <div>Количество на складе: {goodsData.quantity}</div>
-                <div>
-                    <Button text="Добавить в корзину" onClickButton={() => handleClickButton()} />
-                </div>
+                {button}
                 <br />
             </div>
         </>
