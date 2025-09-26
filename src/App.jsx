@@ -5,18 +5,11 @@ import Button from "../src/components/button/button";
 import Goods from "./components/container/Goods";
 import { useGetGoods } from "./hooks/hooks";
 
-import './App.css'
-import GoodsItem from "./components/container/GoodsItem";
+import Basket from "./components/basket/Basket";
 
-function getSorting() {
-    return [
-        { id: 1, text: "Сортировать по цене" },
-        { id: 2, text: "Сортировать по рейтингу" }
-    ]
-}
+import './App.css'
 
 function App() {
-
     const goodsList = useGetGoods();
 
     const [goods, setGoods] = useState(goodsList.goods ? goodsList.goods : []);
@@ -25,7 +18,7 @@ function App() {
     const handleChangeSearchInput = (search) => {
         if (search !== '') {
             const filteredData = goods.filter((item) => {
-            return Object.values(item.name).join('').toLowerCase().includes(search.toLowerCase())
+                return Object.values(item.name).join('').toLowerCase().includes(search.toLowerCase())
             })
             setFilteredGoods(filteredData)
         } else {
@@ -34,7 +27,6 @@ function App() {
     }
 
     const handleSortButtonClick = (text) => {
-
         switch (text) {
             case "Сортировать по цене":
                 setFilteredGoods([...filteredGoods].sort((a, b) => a.price - b.price));
@@ -47,14 +39,14 @@ function App() {
         }
     };
 
-    const sorting = getSorting()
-        .map(sort => <Button key={sort.id}
-            text={sort.text}
-            onClickButton={() => handleSortButtonClick(sort.text)} />);
-
     return (
         <>
             <h1> Market </h1>
+
+            <h2>Корзина:</h2>
+            <div>
+                <Basket />
+            </div>
 
             <h2>Товары</h2>
             <div>
@@ -67,7 +59,12 @@ function App() {
             </div>
 
             <div>
-                {sorting}
+                <Button
+                    text="Сортировать по цене"
+                    onClickButton={() => handleSortButtonClick("Сортировать по цене")} />
+                <Button
+                    text="Сортировать по рейтингу"
+                    onClickButton={() => handleSortButtonClick("Сортировать по рейтингу")} />
             </div>
 
             <br />
