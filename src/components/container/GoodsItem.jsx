@@ -1,7 +1,7 @@
 
 export default function GoodsItem({ goodsData }) {
 
-    console.log(goodsData);
+//     console.log(goodsData);
 
     if (!goodsData.availability) {
         return null;
