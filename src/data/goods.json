@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "category": "Основные",
+    "name": "Volkswagen Touareg III",
+    "code": "WVG*************1",
+    "price": 5199000.30,
+    "availability": true,
+    "rating": 5,
+    "quantity": 1
+  },
+  {
+    "id": 2,
+    "category": "Основные",
+    "name": "Volkswagen Touareg I",
+    "code": "WVG*************2",
+    "price": 2080000.40,
+    "availability": true,
+    "rating": 4,
+    "quantity": 1
+  },
+  {
+    "id": 3,
+    "category": "Дополнительные",
+    "name": "Штатная Магнитола TS105",
+    "code": "REAKOSOUND-TS105",
+    "price": 16016.50,
+    "availability": true,
+    "rating": 4,
+    "quantity": 12
+  },
+  {
+    "id": 4,
+    "category": "Запчасти",
+    "name": "Зимние шипованные легковые шины Formula (Pirelli) Ice 215/65 R16 98T",
+    "code": "079749",
+    "price": 8680.00,
+    "availability": true,
+    "rating": 4,
+    "quantity": 18
+  },
+  {
+    "id": 5,
+    "category": "Запчасти",
+    "name": "Зимние шипованные легковые шины Ikon (Nokian Tyres) Character Ice 7 (Nordman 7) SUV 215/65 R16 102T ",
+    "code": "YD189094",
+    "price": 9100.44,
+    "availability": true,
+    "rating": 5,
+    "quantity": 25
+  }
+]
