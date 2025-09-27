@@ -1,6 +1,3 @@
-import ShoppingCart from "../shopping_cart/ShoppingCart";
-
-import Button from "../button/button";
 
 export default function GoodsItem({ goodsData, button}) {
 
