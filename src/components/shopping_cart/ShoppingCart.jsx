@@ -58,6 +58,11 @@ export default function ShoppingCart() {
         }
     };
 
+    const handleClearShoppingCart = () => {
+        setTotal(0);
+        setCart([]);
+    }
+
     const handleChangeSearchInput = (search) => {
         if (search !== '') {
             const filteredData = goods.filter((item) => {
@@ -90,7 +95,6 @@ export default function ShoppingCart() {
             button={<Button text="Добавить в корзину" onClickButton={() => addItem(goodsItem)}
             />} />)
 
-
     return (
         <div className="shopping-cart">
             <h2>Корзина:</h2>
@@ -108,12 +112,15 @@ export default function ShoppingCart() {
                             </div>
                             <span className="item-price">{item.price * item.quantity}</span>
                         </div>
+
                     ))}
+                    <div className="cart-total">
+                        <span>Итого: {total}</span>
+                    </div>
+                    <Button text="Очистить корзину" onClickButton={() => handleClearShoppingCart()}/>
                 </div>
             )}
-            <div className="cart-total">
-                <span>Итого: {total}</span>
-            </div>
+
 
             <div className="goods-list">
                 <h2>Товары</h2>
@@ -136,14 +143,12 @@ export default function ShoppingCart() {
                     onClickButton={() => handleSortButtonClick("Сортировать по рейтингу")} />
             </div>
 
-            {goodsList.error ?
+            {filteredGoods.length === 0 ?
                 <p>Товары отсутствуют</p> :
                 <>
                     {goodsShow}
-
                 </>
             }
-
         </div>
     );
 }
