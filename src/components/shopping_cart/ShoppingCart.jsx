@@ -52,7 +52,6 @@ export default function ShoppingCart() {
         }
         setTotal(total - item.price);
 
-        console.log(total);
         if (total < item.price) {
             setTotal(0);
         }
