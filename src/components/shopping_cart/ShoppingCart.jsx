@@ -16,9 +16,10 @@ export default function ShoppingCart() {
     const addItem = (item) => {
         const existingItem = cart.find((cartItem) => cartItem.id === item.id);
 
+        const maxQuantity = goods.find((goodsItem) => goodsItem.id === item.id).quantity;
+
         if (existingItem) {
-            if (existingItem.quantity < item.quantity) {
-                console.log("+");
+            if (existingItem.quantity < maxQuantity) {
                 setCart(
                     cart.map((cartItem) =>
                         cartItem.id === item.id
