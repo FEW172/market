@@ -27,12 +27,14 @@ export default function ShoppingCart() {
                             : cartItem
                     )
                 );
+                setTotal(total + item.price);
             }
 
         } else {
             setCart([...cart, { ...item, quantity: 1 }]);
+            setTotal(total + item.price);
         }
-        setTotal(total + item.price);
+
     };
 
     const removeItem = (item) => {
@@ -104,6 +106,9 @@ export default function ShoppingCart() {
                     ))}
                 </div>
             )}
+            <div className="cart-total">
+                <span>Итого: {total}</span>
+            </div>
 
             <div className="goods-list">
                 <h2>Товары</h2>
