@@ -51,6 +51,11 @@ export default function ShoppingCart() {
             );
         }
         setTotal(total - item.price);
+
+        console.log(total);
+        if (total < item.price) {
+            setTotal(0);
+        }
     };
 
     const handleChangeSearchInput = (search) => {
