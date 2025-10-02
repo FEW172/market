@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../button/button";
+import Button from "../button/Button";
 import { useGetGoods } from "../../hooks/hooks";
 import GoodsItem from "../container/GoodsItem";
 
@@ -7,7 +7,8 @@ export default function ShoppingCart() {
 
     const goodsList = useGetGoods();
 
-    const [goods, setGoods] = useState(goodsList.goods ? goodsList.goods : []);
+    const goods = goodsList.goods ? goodsList.goods : [];
+
     const [filteredGoods, setFilteredGoods] = useState(goodsList.goods ? goodsList.goods : []);
 
     const [cart, setCart] = useState([]);
@@ -82,7 +83,8 @@ export default function ShoppingCart() {
                 setFilteredGoods([...filteredGoods].sort((a, b) => a.rating - b.rating));
                 break;
             default:
-                setGoods(filteredGoods);
+                setFilteredGoods(filteredGoods);
+                console.error("При сортировке что-то пошло не так");
         }
     };
 
@@ -91,8 +93,8 @@ export default function ShoppingCart() {
         .map(goodsItem => <GoodsItem
             key={goodsItem.id}
             goodsData={goodsItem}
-            button={<Button text="Добавить в корзину" onClickButton={() => addItem(goodsItem)}
-            />} />)
+            children ={<Button disable={goodsItem.quantity <=0 ? true : false} text="Добавить в корзину" onClickButton={() => addItem(goodsItem)}/>}
+        />)
 
     return (
         <div className="shopping-cart">
@@ -116,7 +118,7 @@ export default function ShoppingCart() {
                     <div className="cart-total">
                         <span>Итого: {total}</span>
                     </div>
-                    <Button text="Очистить корзину" onClickButton={() => handleClearShoppingCart()}/>
+                    <Button text="Очистить корзину" onClickButton={handleClearShoppingCart} />
                 </div>
             )}
 
