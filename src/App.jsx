@@ -1,4 +1,4 @@
-import ShoppingCart from "./components/shopping_cart/ShoppingCart";
+import ShoppingCart from "./components/shopping-cart/ShoppingCart";
 
 import './App.css'
 

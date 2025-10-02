@@ -92,13 +92,14 @@ export default function ShoppingCart() {
         .filter(goodsItem => goodsItem.availability)
         .map(goodsItem => <GoodsItem
             key={goodsItem.id}
-            goodsData={goodsItem}
-            children={<Button
+            goodsData={goodsItem}>
+
+            <Button
                 disable={goodsItem.quantity <= 0 ? true : false}
                 text="Добавить в корзину"
                 onClickButton={() => addItem(goodsItem)}
-            />}
-        />)
+            />
+        </GoodsItem>)
 
     return (
         <div className="shopping-cart">
