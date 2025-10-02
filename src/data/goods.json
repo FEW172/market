@@ -58,5 +58,15 @@
     "availability": true,
     "rating": 5,
     "quantity": 8
+  },
+  {
+    "id": 7,
+    "category": "Дополнительные",
+    "name": "Штатная магнитола Volkswagen Tiguan 1 2007-2018 FarCar s500 6Gb/128Gb, 8 ядер (XL9-489M)",
+    "code": "103708297030",
+    "price": 18690.77,
+    "availability": true,
+    "rating": 0,
+    "quantity": 0
   }
 ]
