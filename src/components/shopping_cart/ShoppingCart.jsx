@@ -93,7 +93,11 @@ export default function ShoppingCart() {
         .map(goodsItem => <GoodsItem
             key={goodsItem.id}
             goodsData={goodsItem}
-            children ={<Button disable={goodsItem.quantity <=0 ? true : false} text="Добавить в корзину" onClickButton={() => addItem(goodsItem)}/>}
+            children={<Button
+                disable={goodsItem.quantity <= 0 ? true : false}
+                text="Добавить в корзину"
+                onClickButton={() => addItem(goodsItem)}
+            />}
         />)
 
     return (
