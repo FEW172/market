@@ -3,7 +3,7 @@ import App from "../../App";
 import ErrorPage from "../error-page";
 import MainPage from "../main-page";
 import ProductShowcase from "../product-showcase/ProductShowcase";
-import ShoppingCart from "../../components/shopping-cart/ShoppingCart";
+import ShoppingCart from "../shopping-cart/ShoppingCart";
 
 const routes = [
     {
