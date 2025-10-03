@@ -1,0 +1,12 @@
+/* стили компонента Nav */
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.container>a {
+    flex: 1;
+    text-align: center;
+}
