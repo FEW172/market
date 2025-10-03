@@ -1,5 +1,5 @@
 import Nav from "../menu/Nav";
-import logo from "../../../public/market.svg"
+import logo from "../logo/market.svg"
 import headerStyle from "./header.module.css"
 
 export default function Header() {
