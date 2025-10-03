@@ -13,17 +13,17 @@ const routes = [
         children: [
             {
                 index: true, // <Link to="/">TODOS</Link>
-                element: <MainPage />,
+                element: <MainPage />
                 //loader: loadTodos
             },
             {
                 path: "/product-showcase", // <Link to="/todos/filtered">FILTERED TODO</Link>
-                element: <ProductShowcase />,
+                element: <ProductShowcase />
                 //loader: loadTodos
             },
             {
                 path: "/shopping-cart", // <Link to="/todos/new">CREATE TODO</Link>
-                element: <ShoppingCart />,
+                element: <ShoppingCart />
                 //action: createTodoAction
             },
         ]
