@@ -5,12 +5,12 @@ function MainPage() {
 
     const productsList = useGetProducts();
     const products = (productsList.products ? productsList.products : [])
-        .filter(productsItem => productsItem.availability);;
+        .filter(productsItem => productsItem.availability)
+        .filter(productsItem => productsItem.quantity > 0)
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0,5);
 
-    const sortedRatingProducts = products.sort((a, b) => b.rating - a.rating);
-    const top5Products = sortedRatingProducts.slice(0, 5);
-
-    const productsShow = top5Products
+    const productsShow = products
         .map(productsItem => <GoodsItem
             key={productsItem.id}
             goodsData={productsItem}>
