@@ -1,15 +1,14 @@
 import { useState } from "react";
 import Button from "../button/Button";
-import { useGetGoods } from "../../hooks/hooks";
+import { useGetProducts } from "../../hooks/hooks";
 import GoodsItem from "../container/GoodsItem";
 
 export default function ShoppingCart() {
 
-    const goodsList = useGetGoods();
+    const productsList = useGetProducts();
+    const products = productsList.goods ? productsList.goods : [];
 
-    const goods = goodsList.goods ? goodsList.goods : [];
-
-    const [filteredGoods, setFilteredGoods] = useState(goodsList.goods ? goodsList.goods : []);
+    const [filteredGoods, setFilteredGoods] = useState(products);
 
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);

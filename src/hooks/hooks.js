@@ -1,9 +1,9 @@
-import goodsData from "../../src/data/goods.json"
+import productsData from "../../src/data/products.json"
 
-export function useGetGoods() {
+export function useGetProducts() {
 
     return {
-        goods: goodsData
+        products: productsData
     }
 }
 

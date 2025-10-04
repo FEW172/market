@@ -1,6 +1,6 @@
 export default function ProductShowcase() {
-    console.log("Витрина товаров");
+
     return <>
-    Витрина товаров
+    <h1>Витрина товаров</h1>
     </>;
 }
