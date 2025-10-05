@@ -4,6 +4,8 @@ import ErrorPage from "../error-page";
 import MainPage from "../main-page";
 import ProductShowcase from "../product-showcase/ProductShowcase";
 import ShoppingCart from "../shopping-cart/ShoppingCart";
+import ProductPage from "../product-showcase/ProductPage";
+import { loadProductById, loadProducts, loadProductsTop5Rating, loadProductsByCategory, loadShoppingCart } from "../../api/loaders"
 
 const routes = [
     {
@@ -12,19 +14,31 @@ const routes = [
         errorElement: <ErrorPage />,
         children: [
             {
-                index: true, // <Link to="/">TODOS</Link>
-                element: <MainPage />
-                //loader: loadTodos
+                index: true,
+                element: <MainPage />,
+                loader: loadProductsTop5Rating
             },
             {
-                path: "/product-showcase", // <Link to="/todos/filtered">FILTERED TODO</Link>
-                element: <ProductShowcase />
-                //loader: loadTodos
+                path: "/product-showcase",
+                element: <ProductShowcase />,
+                children: [
+                    {
+                        path: "/product-showcase/:category",
+                        element: <ProductShowcase />,
+                        loader: loadProductsByCategory
+                    }
+                ],
+                loader: loadProducts
             },
             {
-                path: "/shopping-cart", // <Link to="/todos/new">CREATE TODO</Link>
-                element: <ShoppingCart />
-                //action: createTodoAction
+                path: "/shopping-cart",
+                element: <ShoppingCart />,
+                loader: loadShoppingCart
+            },
+            {
+                path: "/product/:id",
+                element: <ProductPage />,
+                loader: loadProductById
             },
         ]
     }

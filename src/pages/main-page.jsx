@@ -1,26 +1,33 @@
-import { useGetProducts } from "../hooks/hooks";
+import { Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+
 import GoodsItem from "../components/container/GoodsItem";
+import Button from "../components/button/Button";
 
 function MainPage() {
 
-    const productsList = useGetProducts();
-    const products = (productsList.products ? productsList.products : [])
-        .filter(productsItem => productsItem.availability)
-        .filter(productsItem => productsItem.quantity > 0)
-        .sort((a, b) => b.rating - a.rating)
-        .slice(0,5);
+    const { products } = useLoaderData();
 
     const productsShow = products
-        .map(productsItem => <GoodsItem
-            key={productsItem.id}
-            goodsData={productsItem}>
-
-            <button></button>
-        </GoodsItem>)
+        .map(productsItem =>
+            <GoodsItem
+                key={productsItem.id}
+                detailed={false}
+                goodsData={productsItem}>
+                <div>
+                    <Link to={`/product/${productsItem.id}`}>Подробнее</Link>
+                </div>
+                <Button
+                    disable={productsItem.quantity <= 0 ? true : false}
+                    text="Добавить в корзину"
+                    onClickButton={() => addItem(goodsItem)}
+                />
+                <br />
+            </GoodsItem>)
 
     return (
         <>
-            <h1>ТОП-5 товаров по рейтингу</h1>
+            <h1>ТОП-5 <br /> по рейтингу</h1>
             {productsShow}
         </>
     )
