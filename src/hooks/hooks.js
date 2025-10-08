@@ -1,15 +1,3 @@
-import productsData from "../../src/data/products.json"
-
-export function useGetProducts() {
-
-    const productsAvailability = productsData
-        .filter(item => item.availability)
-        .filter(item => item.quantity > 0);
-
-    return {
-        products: productsAvailability
-    }
-}
 
 export function useTransliteration(word) {
     var converter = {
