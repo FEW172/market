@@ -1,5 +1,6 @@
 import GoodsItem from "../../components/container/GoodsItem";
 import { useLoaderData } from "react-router-dom";
+import Button from "../../components/button/Button"
 
 export default function ProductPage() {
     const product = useLoaderData();
@@ -8,7 +9,11 @@ export default function ProductPage() {
         <div>
             <h1>Карточка товара</h1>
             <GoodsItem goodsData={product.products} detailed={true}>
-            <button></button>
+                <Button
+                    disable={product.quantity <= 0 ? true : false}
+                    text="Добавить в корзину"
+                    onClickButton={() => addItem(product)}
+                />
             </GoodsItem>
         </div>)
 }
