@@ -1,8 +1,7 @@
-import { getProducts, getProductsById, getProductsTop5Rating, getProductsByCategory } from "./products/productsapi";
-import { getShoppingCartCount } from "./shopping-cart/shopping-cart-api";
+import { getProductsAll, getProductsById, getProductsTop5Rating, getProductsByCategory } from "./productsapi";
 
 export async function loadProducts() {
-    const products = await getProducts();
+    const products = await getProductsAll();
     return { products };
 }
 
@@ -20,8 +19,4 @@ export async function loadProductsTop5Rating() {
 export async function loadProductsByCategory ({ params }) {
     const products = await getProductsByCategory(params.category);
     return { products };
-}
-
-export async function loadShoppingCart() {
-
 }

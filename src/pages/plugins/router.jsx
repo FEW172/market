@@ -5,7 +5,7 @@ import MainPage from "../main-page";
 import ProductShowcase from "../product-showcase/ProductShowcase";
 import ShoppingCart from "../shopping-cart/ShoppingCart";
 import ProductPage from "../product-showcase/ProductPage";
-import { loadProductById, loadProducts, loadProductsTop5Rating, loadProductsByCategory, loadShoppingCart } from "../../api/loaders"
+import { loadProductById, loadProducts, loadProductsTop5Rating, loadProductsByCategory } from "../../api/products/loaders"
 
 const routes = [
     {
@@ -21,25 +21,23 @@ const routes = [
             {
                 path: "/product-showcase",
                 element: <ProductShowcase />,
-                children: [
-                    {
-                        path: "/product-showcase/:category",
-                        element: <ProductShowcase />,
-                        loader: loadProductsByCategory
-                    }
-                ],
                 loader: loadProducts
             },
             {
                 path: "/shopping-cart",
                 element: <ShoppingCart />,
-                loader: loadShoppingCart
+                //loader: loadShoppingCart
             },
             {
                 path: "/product/:id",
                 element: <ProductPage />,
                 loader: loadProductById
             },
+            {
+                path: "/products/:category",
+                element: <ProductShowcase />,
+                loader: loadProductsByCategory
+            }
         ]
     }
 ];

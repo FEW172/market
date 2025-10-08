@@ -1,7 +1,9 @@
 import productsFile from "../../data/products.json"
+import { useTransliteration } from "../../hooks/hooks";
 
-function getProducts() {
-    const products = JSON.parse(localStorage.getItem("products"));
+function getProductsAll() {
+    let products = JSON.parse(localStorage.getItem("products"));
+
     return new Promise(function(resolve, reject) {
         setTimeout(() => resolve(products ? products : []), 1000);
     });
@@ -39,11 +41,14 @@ function getProductsById(id) {
 }
 
 function getProductsByCategory(category) {
+
     let products = JSON.parse(localStorage.getItem("products"));
+
+    products = products.filter(item => useTransliteration(item.category) === category);
 
     return new Promise(function(resolve, reject) {
         if (products.length > 0) {
-            setTimeout(() => resolve(products.filter(products => products.category == category)), 1000);
+            setTimeout(() => resolve(products.filter(products => useTransliteration(products.category) === category)), 1000);
         } else {
             setTimeout(() => reject(null), 1000);
         }
@@ -63,4 +68,4 @@ function createProducts() {
 
 }
 
-export { getProducts, getProductsCount, getProductsById, createProducts, getProductsTop5Rating, getProductsByCategory };
+export { getProductsAll, getProductsCount, getProductsById, createProducts, getProductsTop5Rating, getProductsByCategory };

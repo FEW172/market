@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import GoodsItem from "../../components/container/GoodsItem";
 import Button from "../../components/button/Button"
+import { useTransliteration } from "../../hooks/hooks";
 
 export default function ProductShowcase() {
 
-    const productsAll = useLoaderData().products;
-    const [productsFiltered, setProductsFiltered] = useState(productsAll);
+    const { products } = useLoaderData();
+
+    console.log(products);
+
+    const [productsFiltered, setProductsFiltered] = useState(products);
 
     const handleChangeSearchInput = (search) => {
         if (search !== '') {
@@ -19,6 +23,30 @@ export default function ProductShowcase() {
             setProductsFiltered(productsAll)
         }
     }
+
+    function getCategoryList() {
+        return [
+            {
+                id: 1,
+                category: "Основные",
+                urlCategory: "/products/" + useTransliteration("Основные")
+            },
+            {
+                id: 2,
+                category: "Дополнительные",
+                urlCategory: "/products/" + useTransliteration("Дополнительные")
+            },
+            {
+                id: 3,
+                category: "Запчасти",
+                urlCategory: "/products/" + useTransliteration("Запчасти")
+            }
+        ]
+    };
+
+    const categoryMenu = getCategoryList().map(item =>
+        <Link key = {item.id} to={item.urlCategory}> {item.category} </Link>
+    );
 
     const handleSortButtonClick = (text) => {
         switch (text) {
@@ -53,6 +81,8 @@ export default function ProductShowcase() {
 
     return (
         <>
+            {categoryMenu}
+            <hr />
             <h1>Витрина товаров</h1>
 
             <div>
