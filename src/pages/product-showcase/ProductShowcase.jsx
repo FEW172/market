@@ -24,6 +24,16 @@ export default function ProductShowcase() {
         }
     }
 
+    //     function getCategoryList() {
+    //         const unique = [];
+    //         productsFiltered.map(item => {
+    //             if (unique.indexOf(item.category) === -1) {
+    //                 unique.push(item.category)
+    //             }
+    //         });
+    //         return unique;
+    //     }
+
     function getCategoryList() {
         return [
             {
@@ -41,9 +51,12 @@ export default function ProductShowcase() {
         ]
     };
 
-    const categoryMenu = getCategoryList().map(item =>
-        <Link key = {item.id} to={ "/products/" + useTransliteration(item.category)}> {item.category} </Link>
-    );
+    const categoryMenu = getCategoryList()
+        .map((item, index) =>
+            <Link key={index} to={"/products/" + useTransliteration(item.category)}> {item.category} </Link>
+        );
+
+    //console.log("menu:", categoryMenu);
 
     const handleSortButtonClick = (text) => {
         switch (text) {
