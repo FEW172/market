@@ -29,23 +29,20 @@ export default function ProductShowcase() {
             {
                 id: 1,
                 category: "Основные",
-                urlCategory: "/products/" + useTransliteration("Основные")
             },
             {
                 id: 2,
                 category: "Дополнительные",
-                urlCategory: "/products/" + useTransliteration("Дополнительные")
             },
             {
                 id: 3,
                 category: "Запчасти",
-                urlCategory: "/products/" + useTransliteration("Запчасти")
             }
         ]
     };
 
     const categoryMenu = getCategoryList().map(item =>
-        <Link key = {item.id} to={item.urlCategory}> {item.category} </Link>
+        <Link key = {item.id} to={ "/products/" + useTransliteration(item.category)}> {item.category} </Link>
     );
 
     const handleSortButtonClick = (text) => {
