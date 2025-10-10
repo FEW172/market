@@ -9,7 +9,7 @@ export default function ProductShowcase() {
 
     const { products } = useLoaderData();
 
-    console.log(products);
+    // console.log(products);
 
     const [productsFiltered, setProductsFiltered] = useState(products);
 
@@ -20,7 +20,7 @@ export default function ProductShowcase() {
             })
             setProductsFiltered(filteredData)
         } else {
-            setProductsFiltered(productsAll)
+            setProductsFiltered(products)
         }
     }
 
