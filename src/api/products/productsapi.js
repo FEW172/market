@@ -2,7 +2,7 @@ import productsFile from "../../data/products.json"
 import { useTransliteration } from "../../hooks/hooks";
 
 function getProductsAll() {
-    let products = JSON.parse(localStorage.getItem("products"));
+    let products = productsFile;
 
     return new Promise(function(resolve, reject) {
         setTimeout(() => resolve(products ? products : []), 1000);
@@ -10,7 +10,10 @@ function getProductsAll() {
 }
 
 function getProductsTop5Rating() {
-    let products = JSON.parse(localStorage.getItem("products"));
+    let products = productsFile;
+
+    console.log(products);
+
     products = (products ? products : [])
 
     const filteredProducts = products
@@ -23,13 +26,13 @@ function getProductsTop5Rating() {
 }
 
 function getProductsCount() {
-    let products = JSON.parse(localStorage.getItem("products"));
+    let products = productsFile;
     products = products ? products : [];
     return products.length;
 }
 
 function getProductsById(id) {
-    let products = JSON.parse(localStorage.getItem("products"));
+    let products = productsFile;
 
     return new Promise(function(resolve, reject) {
         if (products.length > 0) {
@@ -42,7 +45,7 @@ function getProductsById(id) {
 
 function getProductsByCategory(category) {
 
-    let products = JSON.parse(localStorage.getItem("products"));
+    let products = productsFile;
 
     products = products.filter(item => useTransliteration(item.category) === category);
 
@@ -55,17 +58,4 @@ function getProductsByCategory(category) {
     });
 }
 
-function createProducts() {
-    localStorage.clear("products");
-
-    let products = JSON.parse(localStorage.getItem("products"));
-    products = products ? products : [];
-
-    productsFile.forEach(item => {
-        products.push(item)
-        localStorage.setItem("products", JSON.stringify(products));
-    })
-
-}
-
-export { getProductsAll, getProductsCount, getProductsById, createProducts, getProductsTop5Rating, getProductsByCategory };
+export { getProductsAll, getProductsCount, getProductsById, getProductsTop5Rating, getProductsByCategory };
