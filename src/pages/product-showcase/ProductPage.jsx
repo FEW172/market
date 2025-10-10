@@ -10,9 +10,9 @@ export default function ProductPage() {
             <h1>Карточка товара</h1>
             <GoodsItem goodsData={product.products} detailed={true}>
                 <Button
-                    disable={product.quantity <= 0 ? true : false}
+                    disable={product.products.quantity <= 0 ? true : false}
                     text="Добавить в корзину"
-                    onClickButton={() => addItem(product)}
+                    onClickButton={() => addItem(goodsItem)}
                 />
             </GoodsItem>
         </div>)

@@ -72,9 +72,8 @@ export default function ProductShowcase() {
         }
     };
 
-    const productsShow = productsFiltered
+    const [productsShow, setProductsShow] = useState(productsFiltered
         .filter(goodsItem => goodsItem.availability)
-        .filter(goodsItem => goodsItem.quantity > 0)
         .map(goodsItem => <GoodsItem
             key={goodsItem.id}
             goodsData={goodsItem}>
@@ -87,7 +86,7 @@ export default function ProductShowcase() {
                 onClickButton={() => addItem(goodsItem)}
             />
             <br />
-        </GoodsItem>)
+        </GoodsItem>))
 
     return (
         <>
