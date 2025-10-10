@@ -15,7 +15,7 @@ export default function GoodsItem({ goodsData, detailed, children }) {
             }
 
             {detailed ?
-                <div>Доступность: {goodsData.availability ? <>Да</> : <>Нет</>}</div> : null
+                <div>Доступность: {goodsData.availability ? "Да" : "Нет"}</div> : null
             }
 
             {detailed ? <div>Категория: {goodsData.category}</div> : null}
