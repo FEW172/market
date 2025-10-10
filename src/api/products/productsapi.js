@@ -12,8 +12,6 @@ function getProductsAll() {
 function getProductsTop5Rating() {
     let products = productsFile;
 
-    console.log(products);
-
     products = (products ? products : [])
 
     const filteredProducts = products
