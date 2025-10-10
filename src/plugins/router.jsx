@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../../App";
-import ErrorPage from "../../pages/error-page";
-import MainPage from "../../pages/main-page";
-import ProductShowcase from "../../pages/product-showcase/ProductShowcase";
-import ShoppingCart from "../../pages/shopping-cart/ShoppingCart";
-import ProductPage from "../../pages/product-showcase/ProductPage";
-import { loadProductById, loadProducts, loadProductsTop5Rating, loadProductsByCategory } from "../../api/products/loaders"
+import App from "../App";
+import ErrorPage from "../pages/error-page";
+import MainPage from "../pages/main-page";
+import ProductShowcase from "../pages/product-showcase/ProductShowcase";
+import ShoppingCart from "../pages/shopping-cart/ShoppingCart";
+import ProductPage from "../pages/product-showcase/ProductPage";
+import { loadProductById, loadProducts, loadProductsTop5Rating, loadProductsByCategory } from "../api/products/loaders"
 
 const routes = [
     {
