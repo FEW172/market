@@ -5,6 +5,10 @@ import GoodsItem from "../../components/container/GoodsItem";
 import Button from "../../components/button/Button"
 import { useTransliteration } from "../../hooks/hooks";
 
+function handleAddItemToShoppingCart(item) {
+    console.log("Add: ", item);
+}
+
 export default function ProductShowcase() {
 
     const { products } = useLoaderData();
@@ -66,7 +70,7 @@ export default function ProductShowcase() {
             <Button
                 disable={goodsItem.quantity <= 0 ? true : false}
                 text="Добавить в корзину"
-                onClickButton={() => addItem(goodsItem)}
+                onClickButton={() => handleAddItemToShoppingCart(goodsItem)}
             />
             <br />
         </GoodsItem>)

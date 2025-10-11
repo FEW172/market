@@ -4,6 +4,10 @@ import { useLoaderData } from "react-router-dom";
 import GoodsItem from "../components/container/GoodsItem";
 import Button from "../components/button/Button";
 
+function handleAddItemToShoppingCart(item) {
+    console.log("Add: ", item);
+}
+
 function MainPage() {
 
     const { products } = useLoaderData();
@@ -20,7 +24,7 @@ function MainPage() {
                 <Button
                     disable={productsItem.quantity <= 0 ? true : false}
                     text="Добавить в корзину"
-                    onClickButton={() => addItem(goodsItem)}
+                    onClickButton={() => handleAddItemToShoppingCart(productsItem)}
                 />
                 <br />
             </GoodsItem>)

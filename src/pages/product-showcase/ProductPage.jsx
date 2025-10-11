@@ -3,6 +3,10 @@ import { Link, useParams, useLoaderData } from "react-router-dom";
 import Button from "../../components/button/Button"
 import { getProductsAny3 } from "../../api/products/productsapi";
 
+function handleAddItemToShoppingCart(item) {
+    console.log("Add: ", item);
+}
+
 export default function ProductPage() {
     const { id } = useParams();
     const { products } = useLoaderData();
@@ -23,7 +27,7 @@ export default function ProductPage() {
                     <Button
                         disable={productsItem.quantity <= 0 ? true : false}
                         text="Добавить в корзину"
-                        onClickButton={() => addItem(goodsItem)}
+                        onClickButton={() => handleAddItemToShoppingCart(productsItem)}
                     />
                     <br />
                 </GoodsItem>)
@@ -49,11 +53,9 @@ export default function ProductPage() {
                     <Button
                         disable={products.quantity <= 0 ? true : false}
                         text="Добавить в корзину"
-                        onClickButton={() => addItem(goodsItem)}
+                        onClickButton={() => handleAddItemToShoppingCart(products)}
                     />
                 </GoodsItem>
             </div>)
     }
-
-
 }
