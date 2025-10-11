@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import GoodsItem from "../../components/container/GoodsItem";
@@ -9,54 +9,37 @@ export default function ProductShowcase() {
 
     const { products } = useLoaderData();
 
-    // console.log(products);
-
     const [productsFiltered, setProductsFiltered] = useState(products);
+
+    useEffect(() => {
+        setProductsFiltered(products.filter(product => product.availability))
+    }, [products]);
 
     const handleChangeSearchInput = (search) => {
         if (search !== '') {
             const filteredData = productsFiltered.filter((item) => {
                 return Object.values(item.name).join('').toLowerCase().includes(search.toLowerCase())
             })
-            setProductsFiltered(filteredData)
+            setProductsFiltered(filteredData);
         } else {
-            setProductsFiltered(products)
+            setProductsFiltered(products.filter(product => product.availability));
         }
     }
 
-    //     function getCategoryList() {
-    //         const unique = [];
-    //         productsFiltered.map(item => {
-    //             if (unique.indexOf(item.category) === -1) {
-    //                 unique.push(item.category)
-    //             }
-    //         });
-    //         return unique;
-    //     }
-
     function getCategoryList() {
-        return [
-            {
-                id: 1,
-                category: "Основные",
-            },
-            {
-                id: 2,
-                category: "Дополнительные",
-            },
-            {
-                id: 3,
-                category: "Запчасти",
+        const unique = [];
+        products.map(item => {
+            if (unique.indexOf(item.category) === -1) {
+                unique.push(item.category)
             }
-        ]
-    };
+        });
+        return unique;
+    }
 
     const categoryMenu = getCategoryList()
         .map((item, index) =>
-            <Link key={index} to={"/products/" + useTransliteration(item.category)}> {item.category} </Link>
+            <Link key={index} to={"/products/" + useTransliteration(item)}> {item} </Link>
         );
-
-    //console.log("menu:", categoryMenu);
 
     const handleSortButtonClick = (text) => {
         switch (text) {
@@ -72,7 +55,7 @@ export default function ProductShowcase() {
         }
     };
 
-    const [productsShow, setProductsShow] = useState(productsFiltered
+    const productsShow = productsFiltered
         .filter(goodsItem => goodsItem.availability)
         .map(goodsItem => <GoodsItem
             key={goodsItem.id}
@@ -86,7 +69,7 @@ export default function ProductShowcase() {
                 onClickButton={() => addItem(goodsItem)}
             />
             <br />
-        </GoodsItem>))
+        </GoodsItem>)
 
     return (
         <>
@@ -114,7 +97,6 @@ export default function ProductShowcase() {
             <br />
 
             {productsShow}
-
         </>
     )
 
