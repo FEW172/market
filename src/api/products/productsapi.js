@@ -23,6 +23,20 @@ function getProductsTop5Rating() {
     return filteredProducts;
 }
 
+function getProductsAny3() {
+    let products = productsFile;
+
+    products = (products ? products : [])
+
+    const filteredProducts = products
+        .filter(productsItem => productsItem.availability)
+        .filter(productsItem => productsItem.quantity > 0)
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, 3);
+
+    return filteredProducts;
+}
+
 function getProductsCount() {
     let products = productsFile;
     products = products ? products : [];
@@ -56,4 +70,4 @@ function getProductsByCategory(category) {
     });
 }
 
-export { getProductsAll, getProductsCount, getProductsById, getProductsTop5Rating, getProductsByCategory };
+export { getProductsAll, getProductsCount, getProductsById, getProductsTop5Rating, getProductsAny3, getProductsByCategory };

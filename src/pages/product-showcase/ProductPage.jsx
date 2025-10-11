@@ -1,19 +1,59 @@
 import GoodsItem from "../../components/container/GoodsItem";
-import { useLoaderData } from "react-router-dom";
+import { Link, useParams, useLoaderData } from "react-router-dom";
 import Button from "../../components/button/Button"
+import { getProductsAny3 } from "../../api/products/productsapi";
 
 export default function ProductPage() {
-    const product = useLoaderData();
+    const { id } = useParams();
+    const { products } = useLoaderData();
 
-    return (
-        <div>
-            <h1>Карточка товара</h1>
-            <GoodsItem goodsData={product.products} detailed={true}>
-                <Button
-                    disable={product.products.quantity <= 0 ? true : false}
-                    text="Добавить в корзину"
-                    onClickButton={() => addItem(goodsItem)}
-                />
-            </GoodsItem>
-        </div>)
+    if (products === undefined) {
+
+        const productsAny3 = getProductsAny3();
+
+        const productsShow = productsAny3
+            .map(productsItem =>
+                <GoodsItem
+                    key={productsItem.id}
+                    detailed={false}
+                    goodsData={productsItem}>
+                    <div>
+                        <Link to={`/product/${productsItem.id}`}>Подробнее</Link>
+                    </div>
+                    <Button
+                        disable={productsItem.quantity <= 0 ? true : false}
+                        text="Добавить в корзину"
+                        onClickButton={() => addItem(goodsItem)}
+                    />
+                    <br />
+                </GoodsItem>)
+
+        return (
+            <>
+                <div>
+                    Нет товара с идентификатором: {id}
+
+                </div>
+                 <br />
+                <div>
+                    {productsShow}
+                </div>
+            </>
+        );
+
+    } else {
+        return (
+            <div>
+                <h1>Карточка товара</h1>
+                <GoodsItem goodsData={products} detailed={true}>
+                    <Button
+                        disable={products.quantity <= 0 ? true : false}
+                        text="Добавить в корзину"
+                        onClickButton={() => addItem(goodsItem)}
+                    />
+                </GoodsItem>
+            </div>)
+    }
+
+
 }
