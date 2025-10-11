@@ -34,7 +34,7 @@ export default function ProductPage() {
                     Нет товара с идентификатором: {id}
 
                 </div>
-                 <br />
+                <br />
                 <div>
                     {productsShow}
                 </div>
