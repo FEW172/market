@@ -1,16 +1,22 @@
 import { Link } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import GoodsItem from "../components/container/GoodsItem";
 import Button from "../components/button/Button";
 
-function handleAddItemToShoppingCart(item) {
-    console.log("Add: ", item);
-}
+import {add} from "../slice/ShoppingCartSlice"
 
 function MainPage() {
 
+    const dispatch = useDispatch();
+
     const { products } = useLoaderData();
+
+    const handleAddItemToShoppingCart = item => {
+        dispatch(add(item));
+    }
+
 
     const productsShow = products
         .map(productsItem =>

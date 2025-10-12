@@ -4,13 +4,13 @@ import { useLoaderData } from "react-router-dom";
 import GoodsItem from "../../components/container/GoodsItem";
 import Button from "../../components/button/Button"
 import { useTransliteration } from "../../hooks/hooks";
+import { useDispatch } from "react-redux";
+import {add} from "../../slice/ShoppingCartSlice"
 
-function handleAddItemToShoppingCart(item) {
-    console.log("Add: ", item);
-}
 
 export default function ProductShowcase() {
 
+    const dispatch = useDispatch();
     const { products } = useLoaderData();
 
     const [productsFiltered, setProductsFiltered] = useState(products);
@@ -28,6 +28,10 @@ export default function ProductShowcase() {
         } else {
             setProductsFiltered(products.filter(product => product.availability));
         }
+    }
+
+    const handleAddItemToShoppingCart = item => {
+        dispatch(add(item));
     }
 
     function getCategoryList() {
@@ -70,7 +74,7 @@ export default function ProductShowcase() {
             <Button
                 disable={goodsItem.quantity <= 0 ? true : false}
                 text="Добавить в корзину"
-                onClickButton={() => handleAddItemToShoppingCart(goodsItem)}
+                onClickButton={() => {handleAddItemToShoppingCart(goodsItem)}}
             />
             <br />
         </GoodsItem>)

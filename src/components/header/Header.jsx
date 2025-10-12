@@ -1,15 +1,14 @@
 import Nav from "../menu/Nav";
 import logo from "../logo/market.svg"
 import { useNavigate } from 'react-router-dom';
-
-import { getShoppingCartCount } from "../../api/shopping-cart/shopping-cart-api";
-
+import { useSelector } from "react-redux";
+import { countProductsInShoppingCart } from "../../slice/ShoppingCartSlice";
 import headerStyle from "./header.module.css"
 
 export default function Header() {
     const navigate = useNavigate();
 
-    const shoppingCartCount = getShoppingCartCount();
+    const shoppingCartCount = useSelector(countProductsInShoppingCart);
 
     return (
         <>

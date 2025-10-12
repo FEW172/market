@@ -1,7 +1,6 @@
 function getShoppingCartCount() {
     let shoppingCart = JSON.parse(localStorage.getItem("shopping-cart"));
     shoppingCart = shoppingCart ? shoppingCart : [];
-
     return shoppingCart.length;
 }
 
