@@ -2,14 +2,19 @@ import GoodsItem from "../../components/container/GoodsItem";
 import { Link, useParams, useLoaderData } from "react-router-dom";
 import Button from "../../components/button/Button"
 import { getProductsAny3 } from "../../api/products/productsapi";
+import { useDispatch } from "react-redux";
+import { add } from "../../slice/ShoppingCartSlice";
 
-function handleAddItemToShoppingCart(item) {
-    console.log("Add: ", item);
-}
 
 export default function ProductPage() {
     const { id } = useParams();
     const { products } = useLoaderData();
+
+    const dispatch = useDispatch();
+
+    const handleAddItemToShoppingCart = item => {
+        dispatch(add(item));
+    }
 
     if (products === undefined) {
 

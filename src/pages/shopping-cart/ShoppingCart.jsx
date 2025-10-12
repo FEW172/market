@@ -1,13 +1,6 @@
-import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { add, remove, clear, allShoppingCart, countPriceProductsInShoppingCart } from "../../slice/ShoppingCartSlice";
 import Button from "../../components/button/Button";
-
-
-
-
-
 
 export default function ShoppingCart() {
 
