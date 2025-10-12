@@ -26,7 +26,7 @@ export default function ProductShowcase() {
             })
             setProductsFiltered(filteredData);
         } else {
-            setProductsFiltered(products.filter(product => product.availability));
+            setProductsFiltered(products);
         }
     }
 

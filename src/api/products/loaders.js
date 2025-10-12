@@ -1,13 +1,12 @@
-import { getProductsAll, getProductsById, getProductsTop5Rating, getProductsByCategory } from "./productsapi";
+import { getProducts, getProductsById, getProductsTop5Rating, getProductsByCategory } from "./productsapi";
 
 export async function loadProducts() {
-    const products = await getProductsAll();
+    const products = await getProducts();
     return { products };
 }
 
 export async function loadProductById({ params }) {
     const products = await getProductsById(params.id);
-
     return { products };
 }
 

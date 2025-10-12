@@ -1,17 +1,20 @@
 import productsFile from "../../data/products.json"
 import { useTransliteration } from "../../hooks/hooks";
 
-function getProductsAll() {
+function getProducts() {
     let products = productsFile;
+    products = (products ? products : [])
+
+    const filteredProducts = products
+            .filter(productsItem => productsItem.availability);
 
     return new Promise(function(resolve, reject) {
-        setTimeout(() => resolve(products ? products : []), 1000);
+        setTimeout(() => resolve(filteredProducts), 1000);
     });
 }
 
 function getProductsTop5Rating() {
     let products = productsFile;
-
     products = (products ? products : [])
 
     const filteredProducts = products
@@ -70,4 +73,4 @@ function getProductsByCategory(category) {
     });
 }
 
-export { getProductsAll, getProductsCount, getProductsById, getProductsTop5Rating, getProductsAny3, getProductsByCategory };
+export { getProducts, getProductsCount, getProductsById, getProductsTop5Rating, getProductsAny3, getProductsByCategory };
